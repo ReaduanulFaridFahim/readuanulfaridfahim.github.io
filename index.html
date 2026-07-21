@@ -64,7 +64,7 @@
   @media(min-width:720px){ .navlinks{ display:flex; } }
  
   /* ---------- HERO / BOARDING PASS ---------- */
-  header.hero{
+ header.hero{
     padding:150px 0 90px;
     position:relative;
   }
@@ -115,6 +115,13 @@
     width:56px; height:56px; border-radius:50%; object-fit:cover;
     border:2px solid var(--amber); margin-bottom:6px;
   }
+  .bp-avatar{
+    width:56px; height:56px; border-radius:50%; margin-bottom:6px;
+    border:2px solid var(--amber);
+    background:linear-gradient(135deg, var(--panel-2), var(--panel));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:var(--amber);
+  }
  
   .hero-cta{ margin-top:38px; display:flex; gap:14px; flex-wrap:wrap; }
   .btn{
@@ -125,7 +132,6 @@
   .btn-primary{ background:var(--amber); color:#0B111C; border-color:var(--amber); font-weight:600; }
   .btn-primary:hover{ background:#ffbe5c; }
   .btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
- 
   /* ---------- SECTION SCAFFOLDING ---------- */
   section{ padding:90px 0; border-bottom:1px solid var(--line); position:relative; }
   .sec-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:48px; }
