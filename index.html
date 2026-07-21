@@ -17,6 +17,8 @@
     --muted: #8B94A7;
     --amber: #F2A93B;
     --teal: #4FD1C5;
+    --green: #7BC96F;
+    --sky: #6FA8DC;
     --radius: 4px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -154,6 +156,41 @@
     font-family:'JetBrains Mono'; font-size:10px; text-transform:uppercase; letter-spacing:.08em;
     border:1px solid var(--teal); color:var(--teal); padding:3px 8px; border-radius:20px; margin-left:10px;
   }
+  .status-badge.green{ border-color:var(--green); color:var(--green); }
+
+  /* ---------- DOMAIN STRIP ---------- */
+  .domains{ margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+  @media(max-width:760px){ .domains{ grid-template-columns:1fr; } }
+  .domain{ background:var(--panel); padding:26px 24px; }
+  .domain .dlabel{ font-family:'JetBrains Mono'; font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+  .domain .dtitle{ font-family:'Space Grotesk'; font-weight:600; font-size:17px; margin-top:10px; }
+  .domain .ddesc{ color:var(--muted); font-size:13px; margin-top:8px; }
+  .domain.amber .dlabel{ color:var(--amber); }
+  .domain.teal .dlabel{ color:var(--teal); }
+  .domain.green .dlabel{ color:var(--green); }
+
+  /* ---------- SPORTS / COMMUNITY ---------- */
+  .sports-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:24px; }
+  @media(max-width:760px){ .sports-grid{ grid-template-columns:1fr; } }
+  .sport-card{ background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--green); border-radius:var(--radius); padding:26px 28px; margin-bottom:16px; }
+  .sport-card h3{ font-size:17px; }
+  .sport-card .org{ font-family:'JetBrains Mono'; font-size:12px; color:var(--green); display:block; margin-top:4px; }
+  .sport-card p{ color:var(--muted); font-size:14px; margin-top:10px; }
+  .sports-list{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+  .sports-list span{ font-family:'JetBrains Mono'; font-size:11px; color:var(--green); border:1px solid var(--green); padding:5px 10px; border-radius:20px; opacity:.85; }
+
+  /* ---------- TRAVEL / STAMPS ---------- */
+  .stamps{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media(max-width:760px){ .stamps{ grid-template-columns:repeat(2,1fr); } }
+  .stamp{
+    border:1px dashed var(--sky); border-radius:50%; aspect-ratio:1/1;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    padding:18px; position:relative;
+  }
+  .stamp::before{ content:''; position:absolute; inset:6px; border:1px solid var(--sky); border-radius:50%; opacity:.35; }
+  .stamp .place{ font-family:'Space Grotesk'; font-weight:600; font-size:14px; color:var(--text); z-index:1; }
+  .stamp .tag{ font-family:'JetBrains Mono'; font-size:9px; color:var(--sky); text-transform:uppercase; letter-spacing:.1em; margin-top:6px; z-index:1; }
+  .travel-note{ margin-top:32px; color:var(--muted); font-size:14px; max-width:600px; }
 
   /* ---------- PROJECTS ---------- */
   .projects{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
@@ -192,7 +229,7 @@
   .edu-item .deg{ color:var(--muted); font-size:13.5px; margin-top:4px; }
   .edu-item .yr{ font-family:'JetBrains Mono'; font-size:11px; color:var(--teal); margin-top:6px; display:block; }
   .cert-list{ display:flex; flex-direction:column; gap:0; }
-  .cert{ display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-top:1px solid var(--line); font-size:14px; }
+  .cert{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:14px 0; border-top:1px solid var(--line); font-size:13.5px; flex-wrap:wrap; }
   .cert:last-child{ border-bottom:1px solid var(--line); }
   .cert .id{ font-family:'JetBrains Mono'; font-size:10.5px; color:var(--muted); }
 
@@ -229,25 +266,43 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow">Now Boarding · Dhaka, Bangladesh</div>
-    <h1>Readuanul Farid Fahim — grounded in <span class="accent">operations</span>, trained for <span class="accent">AI &amp; ML</span>.</h1>
-    <p class="lede">Airport Operations Executive at US-Bangla Airlines and a CSE graduate specialized in Machine Learning and AI. I move between the runway and the research paper, building systems that are as reliable as a flight schedule and as smart as the models behind them.</p>
+    <div class="eyebrow">Three Runways · One Person · Dhaka, Bangladesh</div>
+    <h1>Readuanul Farid Fahim — operations by trade, <span class="accent">AI &amp; ML</span> by training, <span class="accent">sports</span> by heart.</h1>
+    <p class="lede">Airport Operations Executive at US-Bangla Airlines, a CSE graduate specialized in Machine Learning and Data Analysis, and Joint Secretary of a university sports club. Three disciplines, one habit that ties them together — showing up, on time, every time.</p>
 
     <div class="boarding-pass">
       <div class="bp-main">
         <div class="bp-route">
-          <div class="bp-code">CSE<small>Origin — NSU</small></div>
+          <div class="bp-code">CSE<small>North South University</small></div>
           <div class="bp-plane">✈</div>
-          <div class="bp-code">OPS<small>Destination — US-Bangla</small></div>
+          <div class="bp-code">Executive<small> US-Bangla</small></div>
         </div>
-        <div class="bp-field">Role<b>Airport Ops Executive</b></div>
-        <div class="bp-field">Focus<b>AI · ML · Data</b></div>
-        <div class="bp-field">Based<b>Dhaka, BD</b></div>
+        <div class="bp-field">Role<b>Airport Operation Executive</b></div>
+        <div class="bp-field">Focus<b>Aviation · AI · ML · Data</b></div>
+        <div class="bp-field">Off Duty<b>North South University Games and Sports Club</b></div>
       </div>
       <div class="bp-stub">
-        <div class="bp-field">Passenger<b>R. F. Fahim</b></div>
-        <div class="bp-field">Status<b>Open to work</b></div>
+        <div class="bp-field">MR<b>R. F. Fahim</b></div>
+        <div class="bp-field">Status<b> Always Open for new Opportunity </b></div>
         <div class="barcode" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="domains">
+      <div class="domain amber">
+        <div class="dlabel">Aviation</div>
+        <div class="dtitle">Airport Operations</div>
+        <div class="ddesc">Ramp coordination, ground support, and safety-first execution at US-Bangla Airlines.</div>
+      </div>
+      <div class="domain teal">
+        <div class="dlabel">Technology</div>
+        <div class="dtitle">AI, ML &amp; Data Analysts</div>
+        <div class="ddesc">CSE graduate building computer vision, deep learning, and explainable AI projects.</div>
+      </div>
+      <div class="domain green">
+        <div class="dlabel">Sports</div>
+        <div class="dtitle">Leadership &amp; Community</div>
+        <div class="ddesc">Joint Secretary at NSUSC, organizing university sports for four years running.</div>
       </div>
     </div>
 
@@ -264,14 +319,14 @@
     <div class="sec-head reveal"><span class="sec-num">01</span><h2>About</h2></div>
     <div class="about-grid">
       <div class="reveal">
-        <p>I'm a Computer Science &amp; Engineering graduate from North South University, specialized in Machine Learning and Artificial Intelligence — with a genuine pull toward data analytics, research, and software engineering.</p>
-        <p>Alongside the technical foundation — HTML, CSS, JavaScript, and Python — I've built a working knowledge of digital marketing: SEO, social strategy, and data-driven decisions that connect a product to the people using it.</p>
-        <p>Today that combination shows up in a different way: coordinating ramp and ground operations at one of Bangladesh's leading airlines, where safety procedures and split-second coordination matter as much as any algorithm. I'm drawn to problems that sit at the intersection of structured operations and intelligent systems, and I'm always open to conversations, collaborations, and new ideas in that space.</p>
+        <p>I'm a Computer Science &amp; Engineering graduate from North South University, specialized in Machine Learning and Artificial Intelligence, with a genuine pull toward data analytics, research, and software engineering. That technical foundation — Python, HTML/CSS/JS, and a growing portfolio of ML and computer-vision projects — is the lens I bring to every problem I touch.</p>
+        <p>I put that same discipline to work every day as an Airport Operations Executive at US-Bangla Airlines, coordinating ramp and ground activity where safety procedures and split-second timing matter as much as any algorithm. Structured systems, whether they're running on data or on a runway, are where I do my best work.</p>
+        <p>And I've been a sports person for as long as I've been anything else. As Joint Secretary of the North South University Games &amp; Sports Club, I've spent four years organizing tournaments and building a community around the game — because for me, sport isn't a side interest, it's a lifelong constant, right alongside code and aircraft.</p>
       </div>
       <div class="about-stats reveal">
         <div class="stat"><span>Airport Operations Executive</span><b>US-Bangla</b></div>
         <div class="stat"><span>Joint Secretary, NSUSC</span><b>4+ yrs</b></div>
-        <div class="stat"><span>Professional network</span><b>500+</b></div>
+        <div class="stat"><span>CSE — AI &amp; ML specialization</span><b>NSU</b></div>
         <div class="stat"><span>Licenses &amp; certifications</span><b>9</b></div>
         <div class="stat"><span>Languages</span><b>BN · EN</b></div>
       </div>
@@ -282,7 +337,7 @@
 <section id="experience">
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-num">02</span><h2>Flight Log — Experience</h2></div>
-    <p class="sec-sub reveal">A running log of roles, from student leadership to airline operations to business development internships.</p>
+    <p class="sec-sub reveal">A running log of roles — airline operations, business development internships, and sports leadership, side by side.</p>
 
     <div class="log">
       <div class="log-row reveal">
@@ -297,7 +352,7 @@
       <div class="log-row reveal">
         <div class="log-date">APR 2025 —<br>PRESENT</div>
         <div class="log-body">
-          <h3>Joint Secretary</h3>
+          <h3>Joint Secretary <span class="status-badge green">Sports</span></h3>
           <span class="org">North South University Games &amp; Sports Club (NSUSC)</span>
           <p>Progressed from General Member (2022) to Sub-Executive (2023) to Joint Secretary — over four years of organizing university-wide sporting events and mentoring newer members into the club's culture.</p>
         </div>
@@ -327,7 +382,7 @@
 <section id="projects">
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-num">03</span><h2>Projects</h2></div>
-    <p class="sec-sub reveal">Applied ML and AI work — from computer vision to explainable deep learning.</p>
+    <p class="sec-sub reveal">Applied ML and AI work — from computer vision to explainable deep learning to predictive analytics.</p>
 
     <div class="projects">
       <div class="card reveal">
@@ -337,7 +392,7 @@
         <div class="stack">
           <span>MediaPipe</span><span>Unity</span><span>ARKit/ARCore</span><span>Flask</span><span>Firebase</span>
         </div>
-        <a class="card-link" href="https://github.com/ReaduanulFaridFahim" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Augmented-Reality-Based-Clothing-Trial-App" target="_blank" rel="noopener">View on GitHub ↗</a>
       </div>
 
       <div class="card reveal">
@@ -347,15 +402,48 @@
         <div class="stack">
           <span>TensorFlow</span><span>Keras</span><span>OpenCV</span><span>LIME</span><span>SHAP</span>
         </div>
-        <a class="card-link" href="https://github.com/ReaduanulFaridFahim" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/-Bangla-Handwritten-Text-Conversion-Using-Optical-Character-Recognition-" target="_blank" rel="noopener">View on GitHub ↗</a>
       </div>
-    </div>
 
-    <div class="mini-projects reveal">
-      <div class="mini">+ 4 more projects on GitHub</div>
-      <div class="mini">Research · Data Analysis</div>
-      <div class="mini">Web Development</div>
-      <div class="mini">See full list ↗</div>
+      <div class="card reveal">
+        <span class="tag">Full-Stack · Automation</span>
+        <h3>Hotel Management System</h3>
+        <p>A booking-to-billing platform that automates reservations, check-in/check-out, payments, and staff coordination through a role-based dashboard for admins, staff, and guests.</p>
+        <div class="stack">
+          <span>React</span><span>SQL</span><span>MySQL</span><span>Firebase</span>
+        </div>
+        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Hotel-Management-System-" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+
+      <div class="card reveal">
+        <span class="tag">Machine Learning · Regression</span>
+        <h3>Pre-Owned Bike Price Prediction</h3>
+        <p>Predicts fair market value for used motorcycles from brand, year, mileage, condition, and location — comparing Decision Tree, Random Forest, XGBoost, and Gradient Boosting, with the latter two topping accuracy.</p>
+        <div class="stack">
+          <span>Scikit-Learn</span><span>Pandas</span><span>Flask</span><span>XGBoost</span>
+        </div>
+        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Pre-Owned-Bike-Price-Prediction" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+
+      <div class="card reveal">
+        <span class="tag">Computer Vision · Accessibility</span>
+        <h3>Sign Language Detection</h3>
+        <p>Real-time gesture recognition built on YOLOv5 and MediaPipe hand tracking, translating ASL signs into readable text to support the deaf and hard-of-hearing community.</p>
+        <div class="stack">
+          <span>YOLOv5</span><span>MediaPipe</span><span>PyTorch</span><span>OpenCV</span>
+        </div>
+        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Sign-Language-Detection" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+
+      <div class="card reveal">
+        <span class="tag">Machine Learning · Healthcare</span>
+        <h3>Sleep Disorder Prediction System</h3>
+        <p>Compared nine ML models on sleep-health data to flag disorders early, reaching 92.42% accuracy with Bagging and Logistic Regression, with LIME used to keep predictions explainable to clinicians.</p>
+        <div class="stack">
+          <span>Scikit-Learn</span><span>SMOTE</span><span>LIME</span><span>Python</span>
+        </div>
+        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Sleep-Disorder-Predictions-" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
     </div>
   </div>
 </section>
@@ -400,7 +488,7 @@
 
 <section id="education">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-num">05</span><h2>Education &amp; Certifications</h2></div>
+    <div class="sec-head reveal"><span class="sec-num">05</span><h2>Education, Training &amp; Certifications</h2></div>
     <div class="edu-grid">
       <div class="reveal">
         <div class="edu-item">
@@ -421,19 +509,74 @@
       </div>
       <div class="reveal">
         <div class="cert-list">
-          <div class="cert"><span>Ramp Operation</span><span class="id">US-Bangla · Dec 2025</span></div>
-          <div class="cert"><span>Aviation Basic Training</span><span class="id">US-Bangla · Dec 2025</span></div>
-          <div class="cert"><span>+ 7 more licenses &amp; certifications</span><span class="id">See LinkedIn</span></div>
+          <div class="cert"><span>Ramp Operation</span><span class="id">US-Bangla · GRH/02246 · Dec 2025</span></div>
+          <div class="cert"><span>Aviation Basic Training</span><span class="id">US-Bangla · GRH/02221 · Dec 2025</span></div>
+          <div class="cert"><span>Passenger &amp; Baggage Handling (Initial)</span><span class="id">US-Bangla · GRH/02201 · Dec 2025</span></div>
+          <div class="cert"><span>Aviation Security Initial &amp; Recurrent</span><span class="id">US-Bangla · GRH/02235 · Dec 2025</span></div>
+          <div class="cert"><span>Aircraft Loading &amp; Unloading (Initial)</span><span class="id">US-Bangla · GRH/02177 · Dec 2025</span></div>
+          <div class="cert"><span>Professional Certificate in Data Analysis</span><span class="id">Udemy · Aug 2025</span></div>
+          <div class="cert"><span>HTML, CSS &amp; JavaScript (TypeScript) with Vue</span><span class="id">Udemy · Aug 2021</span></div>
+          <div class="cert"><span>JavaScript for Beginners</span><span class="id">Udemy · Aug 2021</span></div>
+          <div class="cert"><span>HTML5, CSS3 &amp; Bootstrap 4 for Web Dev</span><span class="id">Bohubrihi · Aug 2021</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<section id="sports">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">06</span><h2>Sports &amp; Community</h2></div>
+    <p class="sec-sub reveal">Where the leadership instinct started — and where it still lives, outside the office and the codebase.</p>
+
+    <div class="sports-grid">
+      <div class="reveal">
+        <div class="sport-card">
+          <h3>Joint Secretary, NSUSC</h3>
+          <span class="org">North South University Games &amp; Sports Club</span>
+          <p>Four years across three roles — General Member, Sub-Executive, and now Joint Secretary — helping run football, cricket, basketball, volleyball, badminton, table tennis, and handball programs for the whole university.</p>
+        </div>
+        <div class="sport-card">
+          <h3>Sports Carnival &amp; Team Jersey Launch</h3>
+          <span class="org">Turag Active × NSU Sports Carnival</span>
+          <p>Helped organize a large-scale national sports event spanning seven disciplines, and was part of the team behind the official NSU jersey unveiling for Cricket, Handball, Volleyball, and Table Tennis.</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="sport-card">
+          <h3>Volunteer, Disaster &amp; Humanitarian Relief</h3>
+          <span class="org">Bangladesh Red Crescent Society (BDRCS) · 2013 – 2016</span>
+          <p>Early volunteer work that shaped the same instinct I bring to sports and operations today: show up, coordinate with a team, and get the job done under pressure.</p>
+        </div>
+        <div class="sports-list">
+          <span>Football</span><span>Cricket</span><span>Handball</span><span>Volleyball</span><span>Table Tennis</span><span>Badminton</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="travel">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">07</span><h2>Off the Clock — Travel</h2></div>
+    <p class="sec-sub reveal">The one thing that competes with sports for my free time. A running passport of places across Bangladesh I've explored so far.</p>
+
+    <div class="stamps">
+      <div class="stamp reveal"><div class="place">Saint Martin</div><div class="tag">Island</div></div>
+      <div class="stamp reveal"><div class="place">Cox's Bazar</div><div class="tag">Coast</div></div>
+      <div class="stamp reveal"><div class="place">Bandarban</div><div class="tag">Hills</div></div>
+      <div class="stamp reveal"><div class="place">Rangamati</div><div class="tag">Lake</div></div>
+      <div class="stamp reveal"><div class="place">Alikadam</div><div class="tag">Highlands</div></div>
+      <div class="stamp reveal"><div class="place">Sonadia</div><div class="tag">Island</div></div>
+    </div>
+    <p class="travel-note reveal">Still adding stamps — always planning the next route.</p>
+  </div>
+</section>
+
 <footer id="contact">
   <div class="wrap">
     <div class="eyebrow reveal">Final destination</div>
-    <h2 class="reveal">Let's talk operations, AI, or wherever they meet.</h2>
+    <h2 class="reveal">Let's talk operations, AI, sports, or where to travel next.</h2>
     <div class="contact-links reveal">
       <a class="btn btn-primary" href="https://www.linkedin.com/in/readuanulfaridfahim" target="_blank" rel="noopener">Message on LinkedIn ↗</a>
       <a class="btn btn-ghost" href="https://github.com/ReaduanulFaridFahim" target="_blank" rel="noopener">GitHub ↗</a>
