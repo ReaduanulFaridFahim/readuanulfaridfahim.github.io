@@ -1,0 +1,21 @@
+{
+  "name": "readuanul-farid-fahim-portfolio",
+  "version": "1.0.0",
+  "description": "Readuanul Farid Fahim Personal Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "start": "python serve.py || uv run serve.py",
+    "dev": "uv run serve.py",
+    "serve": "uv run serve.py",
+    "test": "uv run python -m unittest tests/test_portfolio.py",
+    "test:e2e": "uv run python -m unittest tests/test_playwright_e2e.py"
+  },
+  "keywords": [
+    "portfolio",
+    "ai",
+    "machine-learning",
+    "aviation"
+  ],
+  "author": "Readuanul Farid Fahim",
+  "license": "MIT"
+}

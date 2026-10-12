@@ -3,10 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Readuanul Farid Fahim </title>
+<title>Readuanul Farid Fahim | Portfolio — AI/ML &amp; Airport Operations</title>
+<meta name="description" content="Portfolio of Readuanul Farid Fahim — Airport Operations Executive at US-Bangla Airlines and Computer Science graduate specializing in AI, Machine Learning, and Data Analytics.">
+<meta name="keywords" content="Readuanul Farid Fahim, AI, Machine Learning, Airport Operations, US-Bangla Airlines, North South University, Data Analytics, Computer Vision">
+<meta name="author" content="Readuanul Farid Fahim">
+<meta name="theme-color" content="#0B111C">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://readuanulfaridfahim.github.io/">
+<meta property="og:title" content="Readuanul Farid Fahim | Portfolio — AI/ML &amp; Airport Operations">
+<meta property="og:description" content="Airport Operations Executive at US-Bangla Airlines, CSE graduate specialized in Machine Learning, and sports leadership.">
+<meta property="og:image" content="profile.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Readuanul Farid Fahim | Portfolio — AI/ML &amp; Airport Operations">
+<meta name="twitter:description" content="Airport Operations Executive at US-Bangla Airlines, CSE graduate specialized in Machine Learning, and sports leadership.">
+<meta name="twitter:image" content="profile.png">
+
+<link rel="icon" type="image/svg+xml" href="profile.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<noscript>
+  <style>
+    .reveal{ opacity:1 !important; transform:none !important; }
+    #scroll-progress{ display:none !important; }
+    #bg-canvas{ display:none !important; }
+  </style>
+</noscript>
 <style>
   :root{
     --bg: #0B111C;
@@ -22,171 +48,394 @@
     --radius: 4px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; scroll-padding-top:90px;}
   body{
     background:var(--bg);
     color:var(--text);
     font-family:'Inter', sans-serif;
     line-height:1.6;
     overflow-x:hidden;
+    position:relative;
   }
   ::selection{ background:var(--amber); color:#0B111C; }
- 
+
+  /* Ambient Canvas Radar Background */
+  #bg-canvas{
+    position:fixed; top:0; left:0; width:100%; height:100%;
+    pointer-events:none; z-index:0; opacity:0.8;
+  }
+
+  /* Reading Progress Bar */
+  #scroll-progress{
+    position:fixed; top:0; left:0; width:0%; height:3px;
+    background:linear-gradient(90deg, var(--amber), var(--teal));
+    z-index:100; pointer-events:none;
+    transition:width .1s cubic-bezier(.22,1,.36,1);
+  }
+
   h1,h2,h3{ font-family:'Space Grotesk', sans-serif; font-weight:700; letter-spacing:-0.01em; }
   .mono{ font-family:'JetBrains Mono', monospace; }
- 
+
   a{ color:inherit; text-decoration:none; }
- 
-  .wrap{ max-width:1040px; margin:0 auto; padding:0 28px; }
- 
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+
+  .skip-link{
+    position:absolute; top:-120px; left:20px; z-index:1000;
+    background:var(--amber); color:#0B111C; font-family:'JetBrains Mono', monospace;
+    font-size:12px; font-weight:700; padding:10px 18px; border-radius:var(--radius);
+    text-transform:uppercase; letter-spacing:0.05em; transition:top .2s ease;
+  }
+  .skip-link:focus{ position:fixed; top:16px; }
+
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 28px; position:relative; z-index:1; }
+
   /* ---------- NAV ---------- */
   nav{
     position:fixed; top:0; left:0; right:0; z-index:50;
-    background:rgba(11,17,28,0.85);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+    background:rgba(11,17,28,0.92);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(255,255,255,0.07);
+    transition:background .3s ease, border-color .3s ease;
   }
   nav .wrap{
     display:flex; align-items:center; justify-content:space-between;
-    height:64px;
+    height:68px; gap:20px;
   }
-  .brand{ font-family:'Space Grotesk'; font-weight:700; font-size:15px; letter-spacing:0.02em; }
+  .brand{
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:15px;
+    letter-spacing:0.04em; transition:opacity .2s, transform .2s;
+    color:var(--text); display:inline-flex; align-items:center;
+  }
+  .brand:hover{ opacity:.9; transform:scale(1.02); }
   .brand span{ color:var(--amber); }
-  .navlinks{ display:flex; gap:28px; }
+  .navlinks{ display:flex; align-items:center; gap:26px; }
   .navlinks a{
-    font-family:'JetBrains Mono'; font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
-    color:var(--muted); transition:color .2s;
-    border-bottom:1px solid transparent;
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--muted); transition:color .25s ease, border-color .25s ease, transform .2s ease;
+    border-bottom:2px solid transparent;
     padding-bottom:2px;
   }
-  .navlinks a:hover{ color:var(--amber); border-color:var(--amber); }
-  .navlinks{ display:none; }
-  @media(min-width:720px){ .navlinks{ display:flex; } }
- 
+  .navlinks a:hover{ color:var(--amber); border-color:var(--amber); transform:translateY(-1px); }
+  .navlinks a.active{ color:var(--amber); border-bottom-color:var(--amber); }
+  .nav-cta{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.10em; text-transform:uppercase;
+    color:var(--amber); background:rgba(242,169,59,0.08); border:1px solid rgba(242,169,59,0.28);
+    padding:8px 16px; border-radius:24px; display:inline-flex; align-items:center; gap:8px;
+    font-weight:600; transition:all .25s ease;
+  }
+  .nav-cta:hover{
+    background:var(--amber); color:#0B111C; border-color:var(--amber);
+    transform:translateY(-1px); box-shadow:0 0 16px rgba(242,169,59,0.35);
+  }
+  .pulse-dot{
+    width:6px; height:6px; border-radius:50%; background:currentColor;
+    box-shadow:0 0 6px currentColor;
+  }
+  @media(max-width:760px){
+    nav .wrap{ height:auto; padding-top:12px; padding-bottom:12px; gap:10px; flex-wrap:wrap; justify-content:center; }
+    .nav-cta{ display:none; }
+    .navlinks{ flex-wrap:wrap; justify-content:center; gap:8px 14px; width:100%; }
+    .navlinks a{ font-size:10px; letter-spacing:0.10em; padding:6px 4px; display:inline-block; }
+  }
+  @media(max-width:480px){
+    .wrap{ padding:0 16px; }
+    header.hero h1{ font-size:clamp(30px, 7.5vw, 44px); }
+  }
+
   /* ---------- HERO / BOARDING PASS ---------- */
- header.hero{
-    padding:150px 0 90px;
+  header.hero{
+    padding:136px 0 84px;
     position:relative;
+    z-index:1;
   }
-  .eyebrow{
-    font-family:'JetBrains Mono'; font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
-    color:var(--teal); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  .hero-badge{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--teal); margin-bottom:20px; display:inline-flex; align-items:center; gap:9px;
+    background:rgba(79,209,197,0.06); border:1px solid rgba(79,209,197,0.24);
+    padding:6px 14px; border-radius:20px; box-shadow:0 0 20px rgba(79,209,197,0.08);
   }
-  .eyebrow::before{ content:''; width:8px; height:8px; border-radius:50%; background:var(--teal); box-shadow:0 0 10px var(--teal); animation:pulse 2s infinite; }
-  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
- 
-  header.hero h1{ font-size:clamp(38px, 6vw, 64px); line-height:1.05; max-width:820px; }
+  .beacon-pulse{
+    width:7px; height:7px; border-radius:50%; background:var(--teal);
+    box-shadow:0 0 10px var(--teal);
+    animation:towerBeacon 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  @keyframes towerBeacon{
+    0%{ box-shadow:0 0 0 0 rgba(79,209,197,0.7), 0 0 8px var(--teal); }
+    70%{ box-shadow:0 0 0 12px rgba(79,209,197,0), 0 0 12px var(--teal); }
+    100%{ box-shadow:0 0 0 0 rgba(79,209,197,0), 0 0 8px var(--teal); }
+  }
+
+  header.hero h1{
+    font-size:clamp(36px, 5.2vw, 62px);
+    line-height:1.06;
+    max-width:840px;
+    letter-spacing:-0.02em;
+  }
   header.hero h1 .accent{ color:var(--amber); }
-  header.hero p.lede{ margin-top:22px; max-width:560px; color:var(--muted); font-size:17px; }
- 
+
+  /* Animated Typewriter Word Rotator */
+  .typewriter-word{
+    display:inline-block; color:var(--amber);
+    border-right:2px solid var(--amber);
+    padding-right:4px;
+    animation:blinkCaret .85s step-end infinite;
+  }
+  @keyframes blinkCaret{ 0%,100%{ border-color:var(--amber); } 50%{ border-color:transparent; } }
+
+  header.hero p.lede{
+    margin-top:22px; max-width:640px; color:#A4B1C6; font-size:17px; line-height:1.65;
+  }
+  header.hero p.lede strong{ color:var(--text); font-weight:600; }
+
+  /* Hero CTAs */
+  .hero-cta{
+    margin-top:28px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase;
+    padding:12px 22px; border-radius:var(--radius); border:1px solid var(--line);
+    transition:all .25s cubic-bezier(.16,1,.3,1); display:inline-flex; align-items:center; gap:8px;
+    cursor:pointer;
+  }
+  .btn:hover{
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 10px 24px rgba(0,0,0,0.3);
+  }
+  .btn-primary{
+    background:var(--amber); color:#0B111C; border-color:var(--amber); font-weight:600;
+    box-shadow:0 0 16px rgba(242,169,59,0.25);
+  }
+  .btn-primary:hover{ background:#ffbe5c; box-shadow:0 0 28px rgba(242,169,59,0.45); }
+  .btn-ghost{
+    background:rgba(255,255,255,0.02); border-color:var(--line); color:var(--text);
+  }
+  .btn-ghost:hover{ border-color:var(--teal); color:var(--teal); box-shadow:0 0 16px rgba(79,209,197,0.2); }
+
+  /* Profile Card Structure */
   .boarding-pass{
-    margin-top:56px;
+    margin-top:44px;
     background:var(--panel);
     border:1px solid var(--line);
     border-radius:var(--radius);
     display:grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns:1fr auto;
     position:relative;
     overflow:hidden;
+    transition:box-shadow .35s ease, border-color .35s ease, transform .25s cubic-bezier(.16,1,.3,1);
+    transform-style:preserve-3d;
   }
-  .bp-main{ padding:28px 32px; display:flex; flex-wrap:wrap; gap:32px 48px; align-items:center; }
-  .bp-route{ display:flex; align-items:center; gap:16px; }
-  .bp-code{ font-family:'Space Grotesk'; font-weight:700; font-size:30px; }
-  .bp-code small{ display:block; font-family:'JetBrains Mono'; font-weight:400; font-size:10px; color:var(--muted); letter-spacing:0.1em; margin-top:4px; }
-  .bp-plane{ color:var(--amber); font-size:18px; opacity:.8; }
-  .bp-field{ font-family:'JetBrains Mono'; font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; }
-  .bp-field b{ display:block; font-family:'Inter'; font-size:14px; color:var(--text); font-weight:600; text-transform:none; letter-spacing:0; margin-top:4px; }
+  .boarding-pass:hover{
+    box-shadow:0 20px 42px rgba(8,12,18,0.45);
+    border-color:rgba(242,169,59,0.35);
+  }
+  .boarding-pass::after{
+    content:''; position:absolute; top:0; left:-130%; width:80%; height:100%;
+    background:linear-gradient(90deg, transparent, rgba(242,169,59,0.03), rgba(79,209,197,0.06), transparent);
+    transform:skewX(-20deg); pointer-events:none;
+    animation:hologramScan 7s cubic-bezier(.4,0,.2,1) infinite;
+  }
+  @keyframes hologramScan{
+    0%,72%{ left:-130%; opacity:0; }
+    78%{ opacity:1; }
+    100%{ left:220%; opacity:0; }
+  }
+
+  .bp-main{
+    padding:32px 34px; display:flex; flex-direction:column; gap:28px; justify-content:center;
+  }
+  .bp-route{ display:flex; align-items:center; gap:20px; }
+  .bp-code{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:30px; letter-spacing:0.02em; }
+  .bp-code small{
+    display:block; font-family:'JetBrains Mono', monospace; font-weight:400; font-size:10px;
+    color:var(--muted); letter-spacing:0.1em; margin-top:4px; text-transform:uppercase;
+  }
+  .bp-vector{
+    display:flex; align-items:center; gap:8px; flex-grow:1; max-width:180px; position:relative;
+  }
+  .bp-line{
+    flex-grow:1; height:1px; background:linear-gradient(90deg, rgba(242,169,59,0.2), rgba(242,169,59,0.7));
+  }
+  .bp-plane{
+    color:var(--amber); font-size:18px; display:inline-block;
+    animation:flightDrift 3.5s ease-in-out infinite;
+  }
+  @keyframes flightDrift{
+    0%,100%{ transform:translate(0, 0) rotate(0deg); }
+    50%{ transform:translate(4px, -2px) rotate(2deg); }
+  }
+
+  .bp-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:18px 32px;
+  }
+  .bp-field{ font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; }
+  .bp-field b{ display:block; font-family:'Inter', sans-serif; font-size:14px; color:var(--text); font-weight:600; text-transform:none; letter-spacing:0; margin-top:4px; }
+  
+  /* Profile Stub */
   .bp-stub{
     background:var(--panel-2);
     border-left:1px dashed var(--line);
-    padding:28px 26px;
-    display:flex; flex-direction:column; justify-content:center; gap:10px;
-    min-width:180px;
+    padding:32px 30px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+    min-width:230px;
     position:relative;
   }
   .bp-stub::before, .bp-stub::after{
-    content:''; position:absolute; left:-8px; width:16px; height:16px; border-radius:50%; background:var(--bg);
+    content:''; position:absolute; left:-9px; width:18px; height:18px; border-radius:50%; background:var(--bg);
   }
-  .bp-stub::before{ top:-8px; }
-  .bp-stub::after{ bottom:-8px; }
-  .barcode{ display:flex; gap:2px; align-items:flex-end; height:26px; margin-top:6px; }
-  .barcode i{ display:block; width:2px; background:var(--muted); opacity:.6; }
-   .bp-photo{
+  .bp-stub::before{ top:-9px; }
+  .bp-stub::after{ bottom:-9px; }
+
+  .bp-photo-wrapper{ position:relative; width:200px; height:200px; }
+  .bp-photo{
     width:200px; height:200px; border-radius:50%; object-fit:cover;
-    border:4px solid var(--amber); margin-bottom:10px;
+    border:4px solid var(--amber); display:block;
+    box-shadow:0 0 24px rgba(242,169,59,0.25);
+    transition:transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease;
   }
-   
-    background:linear-gradient(135deg, var(--panel-2), var(--panel));
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:var(--amber);
+  .bp-photo:hover{
+    transform:scale(1.04);
+    box-shadow:0 0 34px rgba(242,169,59,0.48);
   }
- 
-  .hero-cta{ margin-top:38px; display:flex; gap:14px; flex-wrap:wrap; }
-  .btn{
-    font-family:'JetBrains Mono'; font-size:12px; letter-spacing:0.06em; text-transform:uppercase;
-    padding:13px 22px; border-radius:var(--radius); border:1px solid var(--line);
-    transition:all .2s; display:inline-flex; align-items:center; gap:8px;
+  .bp-stub-meta{ width:100%; display:flex; flex-direction:column; gap:8px; }
+  .status-cleared{
+    color:var(--teal) !important; font-family:'JetBrains Mono', monospace !important;
+    font-size:11px !important; letter-spacing:0.06em;
   }
-  .btn-primary{ background:var(--amber); color:#0B111C; border-color:var(--amber); font-weight:600; }
-  .btn-primary:hover{ background:#ffbe5c; }
-  .btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
+
+  .barcode{ display:flex; gap:2px; align-items:flex-end; height:26px; width:100%; position:relative; overflow:hidden; }
+  .barcode i{ display:block; width:2px; background:var(--muted); opacity:.6; }
+  .barcode::after{
+    content:''; position:absolute; top:0; left:0; width:100%; height:2px;
+    background:linear-gradient(90deg, transparent, var(--amber), transparent);
+    box-shadow:0 0 8px var(--amber);
+    animation:laserSweep 3s ease-in-out infinite alternate;
+  }
+  @keyframes laserSweep{
+    0%{ transform:translateY(0); opacity:0.3; }
+    50%{ opacity:0.9; }
+    100%{ transform:translateY(24px); opacity:0.3; }
+  }
+
+  @media(max-width:820px){
+    header.hero{ padding-top:125px; }
+    .boarding-pass{ grid-template-columns:1fr; }
+    .bp-stub{ border-left:none; border-top:1px dashed var(--line); min-width:0; }
+    .bp-stub::before, .bp-stub::after{ display:none; }
+  }
+  @media(max-width:760px){
+    .hero-cta{ flex-direction:column; align-items:stretch; }
+    .btn{ justify-content:center; }
+    .bp-main{ padding:22px 20px; gap:20px; }
+    .bp-grid{ grid-template-columns:1fr; }
+    .bp-route{ flex-direction:column; align-items:flex-start; gap:12px; }
+    .bp-code{ font-size:26px; }
+    .bp-vector{ width:100%; max-width:none; }
+    .bp-photo, .bp-photo-wrapper{ width:160px; height:160px; }
+  }
+
   /* ---------- SECTION SCAFFOLDING ---------- */
-  section{ padding:90px 0; border-bottom:1px solid var(--line); position:relative; }
+  section{ padding:90px 0; border-bottom:1px solid var(--line); position:relative; z-index:1; }
   .sec-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:48px; }
   .sec-num{ font-family:'JetBrains Mono'; color:var(--amber); font-size:13px; }
   .sec-head h2{ font-size:clamp(24px,3.2vw,32px); }
   .sec-sub{ color:var(--muted); max-width:600px; margin-bottom:44px; margin-top:-28px; font-size:15px; }
- 
-  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  @media(max-width:760px){
+    section{ padding:72px 0; }
+    .sec-head{ margin-bottom:32px; }
+    .sec-sub{ margin-top:-12px; margin-bottom:28px; }
+  }
+
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
   .reveal.in{ opacity:1; transform:translateY(0); }
- 
+
   /* ---------- ABOUT ---------- */
   .about-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:56px; }
-  @media(max-width:760px){ .about-grid{ grid-template-columns:1fr; } }
+  @media(max-width:760px){
+    .about-grid{ grid-template-columns:1fr; }
+    .stat{ flex-direction:column; align-items:flex-start; gap:6px; }
+    .stat span{ text-align:left; max-width:none; }
+  }
   .about-grid p{ color:#CBD1DE; margin-bottom:16px; font-size:15.5px; }
   .about-stats{ display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line); }
-  .stat{ padding:18px 0; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:baseline; }
-  .stat b{ font-family:'Space Grotesk'; font-size:22px; color:var(--amber); }
+  .stat{ padding:18px 0; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:baseline; transition:background .2s; }
+  .stat:hover{ background:rgba(255,255,255,0.015); }
+  .stat b{ font-family:'Space Grotesk'; font-size:22px; color:var(--amber); font-variant-numeric:tabular-nums; }
   .stat span{ font-family:'JetBrains Mono'; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; text-align:right; max-width:140px; }
- 
+
   /* ---------- EXPERIENCE / FLIGHT LOG ---------- */
   .log{ position:relative; padding-left:0; }
   .log-row{
     display:grid; grid-template-columns:100px 1fr; gap:24px;
     padding:26px 0; border-top:1px solid var(--line);
+    transition:background .2s ease;
+  }
+  .log-row:hover{
+    background:rgba(255,255,255,0.018);
   }
   .log-row:last-child{ border-bottom:1px solid var(--line); }
   .log-date{ font-family:'JetBrains Mono'; font-size:12px; color:var(--teal); padding-top:2px; }
+  @media(max-width:760px){
+    .log-row{ grid-template-columns:1fr; gap:12px; }
+    .log-date{ font-size:11px; }
+    .status-badge{ margin-left:0; margin-top:8px; display:inline-block; }
+  }
   .log-body h3{ font-size:18px; font-weight:600; }
   .log-body .org{ color:var(--amber); font-size:13px; font-family:'JetBrains Mono'; margin-top:4px; display:block; }
   .log-body p{ color:var(--muted); margin-top:10px; font-size:14.5px; max-width:640px; }
   .status-badge{
     font-family:'JetBrains Mono'; font-size:10px; text-transform:uppercase; letter-spacing:.08em;
     border:1px solid var(--teal); color:var(--teal); padding:3px 8px; border-radius:20px; margin-left:10px;
+    transition:all .2s;
   }
   .status-badge.green{ border-color:var(--green); color:var(--green); }
- 
+
   /* ---------- DOMAIN STRIP ---------- */
-  .domains{ margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
-  @media(max-width:760px){ .domains{ grid-template-columns:1fr; } }
-  .domain{ background:var(--panel); padding:26px 24px; }
-  .domain .dlabel{ font-family:'JetBrains Mono'; font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
-  .domain .dtitle{ font-family:'Space Grotesk'; font-weight:600; font-size:17px; margin-top:10px; }
-  .domain .ddesc{ color:var(--muted); font-size:13px; margin-top:8px; }
+  .domains{
+    margin-top:44px; display:grid; grid-template-columns:repeat(3,1fr);
+    gap:1px; background:var(--line); border:1px solid var(--line);
+    border-radius:var(--radius); overflow:hidden;
+  }
+  @media(max-width:820px){ .domains{ grid-template-columns:1fr; } }
+  .domain{
+    background:var(--panel); padding:26px 24px;
+    transition:background .25s ease, transform .25s ease;
+    position:relative;
+  }
+  .domain:hover{ background:var(--panel-2); transform:translateY(-2px); }
+  .domain .dlabel{
+    font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.12em;
+    text-transform:uppercase; display:flex; align-items:center;
+  }
+  .domain .dtitle{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:17px; margin-top:10px; }
+  .domain .ddesc{ color:var(--muted); font-size:13px; margin-top:8px; line-height:1.55; }
   .domain.amber .dlabel{ color:var(--amber); }
   .domain.teal .dlabel{ color:var(--teal); }
   .domain.green .dlabel{ color:var(--green); }
- 
+
   /* ---------- SPORTS / COMMUNITY ---------- */
   .sports-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:24px; }
   @media(max-width:760px){ .sports-grid{ grid-template-columns:1fr; } }
-  .sport-card{ background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--green); border-radius:var(--radius); padding:26px 28px; margin-bottom:16px; }
+  .sport-card{
+    background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--green);
+    border-radius:var(--radius); padding:26px 28px; margin-bottom:16px;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .sport-card:hover{ transform:translateX(4px); box-shadow:0 8px 24px rgba(0,0,0,0.25); }
   .sport-card h3{ font-size:17px; }
   .sport-card .org{ font-family:'JetBrains Mono'; font-size:12px; color:var(--green); display:block; margin-top:4px; }
   .sport-card p{ color:var(--muted); font-size:14px; margin-top:10px; }
   .sports-list{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
-  .sports-list span{ font-family:'JetBrains Mono'; font-size:11px; color:var(--green); border:1px solid var(--green); padding:5px 10px; border-radius:20px; opacity:.85; }
- 
+  .sports-list span{
+    font-family:'JetBrains Mono'; font-size:11px; color:var(--green); border:1px solid var(--green);
+    padding:5px 10px; border-radius:20px; opacity:.85;
+    transition:background .2s, transform .2s;
+  }
+  .sports-list span:hover{
+    background:rgba(123,201,111,0.14);
+    transform:translateY(-1px);
+  }
+
   /* ---------- TRAVEL / STAMPS ---------- */
   .stamps{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   @media(max-width:760px){ .stamps{ grid-template-columns:repeat(2,1fr); } }
@@ -194,43 +443,95 @@
     border:1px dashed var(--sky); border-radius:50%; aspect-ratio:1/1;
     display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
     padding:18px; position:relative; overflow:hidden;
+    transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .3s ease, box-shadow .35s ease;
+    cursor:default;
   }
-  .stamp::before{ content:''; position:absolute; inset:6px; border:1px solid var(--sky); border-radius:50%; opacity:.35; z-index:2; pointer-events:none; }
-  .stamp img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.55; }
+  .stamp:hover{
+    transform:scale(1.05) rotate(-1.5deg);
+    border-color:var(--amber);
+    box-shadow:0 14px 30px rgba(0,0,0,0.45);
+  }
+  .stamp::before{
+    content:''; position:absolute; inset:6px; border:1px solid var(--sky); border-radius:50%;
+    opacity:.35; z-index:2; pointer-events:none;
+    transition:border-color .3s ease, opacity .3s ease;
+  }
+  .stamp:hover::before{
+    border-color:var(--amber);
+    opacity:.65;
+  }
+  .stamp img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.55;
+    transition:opacity .35s ease, transform .45s cubic-bezier(.16,1,.3,1);
+  }
+  .stamp:hover img{
+    opacity:.72;
+    transform:scale(1.08);
+  }
   .stamp .scrim{ position:absolute; inset:0; background:radial-gradient(circle, transparent 20%, var(--bg) 95%); z-index:1; }
-  .stamp .place{ font-family:'Space Grotesk'; font-weight:600; font-size:14px; color:var(--text); z-index:2; }
+  .stamp .place{
+    font-family:'Space Grotesk'; font-weight:600; font-size:14px; color:var(--text); z-index:2;
+    transition:color .25s ease;
+  }
+  .stamp:hover .place{ color:var(--amber); }
   .stamp .tag{ font-family:'JetBrains Mono'; font-size:9px; color:var(--sky); text-transform:uppercase; letter-spacing:.1em; margin-top:6px; z-index:2; }
   .travel-note{ margin-top:32px; color:var(--muted); font-size:14px; max-width:600px; }
-  .sport-photo{ width:100%; height:180px; object-fit:cover; border-radius:var(--radius); margin-bottom:18px; display:block; }
- 
+
   /* ---------- PROJECTS ---------- */
   .projects{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
   @media(max-width:760px){ .projects{ grid-template-columns:1fr; } }
   .card{
     background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
     padding:28px; display:flex; flex-direction:column; height:100%;
-    transition:border-color .2s, transform .2s;
+    transition:border-color .25s ease, transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease;
+    transform-style:preserve-3d;
   }
-  .card:hover{ border-color:var(--amber); transform:translateY(-3px); }
+  .card:hover{
+    border-color:var(--amber);
+    box-shadow:0 18px 38px rgba(8,12,18,0.45);
+  }
   .card .tag{ font-family:'JetBrains Mono'; font-size:10px; color:var(--teal); text-transform:uppercase; letter-spacing:.1em; }
   .card h3{ font-size:19px; margin-top:10px; }
   .card p{ color:var(--muted); font-size:14px; margin-top:12px; flex-grow:1; }
   .stack{ display:flex; flex-wrap:wrap; gap:6px; margin-top:18px; }
-  .stack span{ font-family:'JetBrains Mono'; font-size:10px; color:var(--muted); border:1px solid var(--line); padding:4px 8px; border-radius:20px; }
-  .card-link{ margin-top:18px; font-family:'JetBrains Mono'; font-size:12px; color:var(--amber); display:inline-flex; align-items:center; gap:6px; }
- 
+  .stack span{
+    font-family:'JetBrains Mono'; font-size:10px; color:var(--muted); border:1px solid var(--line);
+    padding:4px 8px; border-radius:20px;
+    transition:border-color .2s ease, color .2s ease, background .2s ease, transform .2s ease;
+  }
+  .stack span:hover{
+    border-color:var(--teal); color:var(--teal); background:rgba(79,209,197,0.06);
+    transform:translateY(-1px);
+  }
+  .card-link{
+    margin-top:18px; font-family:'JetBrains Mono'; font-size:12px; color:var(--amber);
+    display:inline-flex; align-items:center; gap:6px;
+    transition:color .2s ease, transform .2s ease;
+  }
+  .card-link:hover{
+    color:#ffbe5c;
+    transform:translateX(3px);
+  }
+
   .mini-projects{ margin-top:28px; display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
   @media(max-width:760px){ .mini-projects{ grid-template-columns:repeat(2,1fr); } }
   .mini{ border:1px dashed var(--line); border-radius:var(--radius); padding:16px; font-family:'JetBrains Mono'; font-size:11px; color:var(--muted); text-align:center; }
- 
+
   /* ---------- SKILLS ---------- */
   .skill-cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
   @media(max-width:760px){ .skill-cols{ grid-template-columns:1fr; } }
-  .skill-col h4{ font-family:'JetBrains Mono'; font-size:11px; color:var(--amber); text-transform:uppercase; letter-spacing:.1em; margin-bottom:16px; }
+  .skill-col h3, .skill-col h4{ font-family:'JetBrains Mono'; font-size:11px; color:var(--amber); text-transform:uppercase; letter-spacing:.1em; margin-bottom:16px; font-weight:600; }
   .skill-col ul{ list-style:none; }
-  .skill-col li{ padding:9px 0; border-top:1px solid var(--line); font-size:14px; color:#CBD1DE; }
+  .skill-col li{
+    padding:9px 0; border-top:1px solid var(--line); font-size:14px; color:#CBD1DE;
+    transition:color .2s ease, transform .2s ease;
+  }
+  .skill-col li:hover{
+    color:#fff;
+    transform:translateX(4px);
+  }
   .skill-col li:last-child{ border-bottom:1px solid var(--line); }
- 
+
   /* ---------- EDU / CERTS ---------- */
   .edu-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
   @media(max-width:760px){ .edu-grid{ grid-template-columns:1fr; } }
@@ -240,30 +541,77 @@
   .edu-item .deg{ color:var(--muted); font-size:13.5px; margin-top:4px; }
   .edu-item .yr{ font-family:'JetBrains Mono'; font-size:11px; color:var(--teal); margin-top:6px; display:block; }
   .cert-list{ display:flex; flex-direction:column; gap:0; }
-  .cert{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:14px 0; border-top:1px solid var(--line); font-size:13.5px; flex-wrap:wrap; }
+  .cert{
+    display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+    padding:14px 0; border-top:1px solid var(--line); font-size:13.5px; flex-wrap:wrap;
+    transition:background .2s ease;
+  }
+  .cert:hover{ background:rgba(255,255,255,0.015); }
   .cert:last-child{ border-bottom:1px solid var(--line); }
   .cert .id{ font-family:'JetBrains Mono'; font-size:10.5px; color:var(--muted); }
- 
+
+  /* ---------- REFERENCES ---------- */
+  .ref-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+  .ref-card{
+    background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--amber);
+    border-radius:var(--radius); padding:24px 22px; min-height:170px;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .ref-card:hover{
+    transform:translateY(-2px);
+  }
+  .ref-card .name{ font-family:'Space Grotesk'; font-size:20px; font-weight:700; }
+  .ref-card .role{ font-family:'JetBrains Mono'; font-size:11px; color:var(--amber); margin-top:8px; letter-spacing:.08em; text-transform:uppercase; }
+  .ref-card .org{ display:block; color:var(--muted); margin-top:8px; }
+  .ref-card .contact-line{ margin-top:12px; color:#CBD1DE; }
+  @media(max-width:760px){ .ref-grid{ grid-template-columns:1fr; } }
+
   /* ---------- FOOTER ---------- */
-  footer{ padding:80px 0 50px; }
+  footer{ padding:80px 0 50px; position:relative; z-index:1; }
   footer .wrap{ display:flex; flex-direction:column; align-items:flex-start; }
   footer h2{ font-size:clamp(30px,5vw,48px); max-width:600px; }
   footer .contact-links{ margin-top:36px; display:flex; gap:16px; flex-wrap:wrap; }
   footer .foot-bottom{ margin-top:70px; width:100%; padding-top:24px; border-top:1px solid var(--line);
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
     font-family:'JetBrains Mono'; font-size:11px; color:var(--muted); }
- 
+
+  /* Back to Top Floating Button */
+  .back-to-top{
+    position:fixed; bottom:28px; right:28px; z-index:90;
+    width:44px; height:44px; border-radius:50%;
+    background:var(--panel-2); border:1px solid var(--line);
+    color:var(--amber); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; opacity:0; pointer-events:none;
+    transform:translateY(12px);
+    transition:opacity .3s ease, transform .3s ease, border-color .2s ease, background .2s ease;
+    box-shadow:0 8px 24px rgba(0,0,0,0.3);
+  }
+  .back-to-top.visible{
+    opacity:1; pointer-events:auto; transform:translateY(0);
+  }
+  .back-to-top:hover{
+    border-color:var(--amber); background:var(--panel);
+    transform:translateY(-3px);
+  }
+
   @media (prefers-reduced-motion: reduce){
     *{ animation:none !important; transition:none !important; }
-    .reveal{ opacity:1; transform:none; }
+    .reveal{ opacity:1 !important; transform:none !important; }
+    .boarding-pass::after, .barcode::after{ display:none !important; }
+    #scroll-progress, #bg-canvas{ display:none !important; }
   }
 </style>
 </head>
 <body>
 
-<nav>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav aria-label="Main Navigation">
   <div class="wrap">
-    <div class="brand">RF<span>·</span>FAHIM</div>
+    <a href="#" class="brand" aria-label="Readuanul Farid Fahim Homepage">RF<span>·</span>FAHIM</a>
     <div class="navlinks">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
@@ -272,60 +620,90 @@
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </div>
+    <a href="#contact" class="nav-cta btn-pill mono">
+      <span class="pulse-dot" aria-hidden="true"></span>
+      <span>GET IN TOUCH</span>
+    </a>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow">Three Runways · One Person · Dhaka, Bangladesh</div>
-    <h1>Readuanul Farid Fahim — Aviation by work, <span class="accent">AI &amp; ML</span> by study and training, <span class="accent">sports</span> by heart.</h1>
-    <p class="lede">Airport Operations Executive at US-Bangla Airlines, a CSE graduate specialized in Machine Learning and Data Analysis, and Joint Secretary of a university sports club. Three disciplines, one habit that ties them together — showing up, on time, every time.</p>
+    <div class="hero-badge mono">
+      <span class="beacon-pulse" aria-hidden="true"></span>
+      MACHINE LEARNING · AVIATION · SPORTS LEADERSHIP
+    </div>
+    <h1>Readuanul Farid Fahim — Aviation by work, <span class="typewriter-word" id="heroTypewriter">AI &amp; ML</span> by study and training, <span class="accent">sports</span> by heart.</h1>
+    <p class="lede">Airport Operations Executive at <strong>US-Bangla Airlines</strong>, Computer Science graduate specializing in <strong>Machine Learning &amp; Computer Vision</strong>, and Joint Secretary at <strong>NSUSC</strong>. Three distinct disciplines united by one habit: precision, reliability, and showing up every time.</p>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#contact">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+        Get in touch
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/ReaduanulFaridFahim" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub ↗
+      </a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/readuanulfaridfahim" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn ↗
+      </a>
+    </div>
 
     <div class="boarding-pass">
       <div class="bp-main">
         <div class="bp-route">
           <div class="bp-code">CSE<small>North South University</small></div>
-          <div class="bp-plane">✈</div>
-          <div class="bp-code">Executive<small> US-Bangla</small></div>
+          <div class="bp-vector" aria-hidden="true">
+            <span class="bp-line"></span>
+            <span class="bp-plane">✈</span>
+            <span class="bp-line"></span>
+          </div>
+          <div class="bp-code">Executive<small>US-Bangla</small></div>
         </div>
-        <div class="bp-field">Role<b>Airport Operation Executive</b></div>
-        <div class="bp-field">Focus<b>Aviation · AI · ML · Data</b></div>
-        <div class="bp-field">Off Duty<b>North South University Games and Sports Club</b></div>
+        <div class="bp-grid">
+          <div class="bp-field">Passenger<b>Readuanul Farid Fahim</b></div>
+          <div class="bp-field">Role<b>Airport Operations Executive</b></div>
+          <div class="bp-field">Focus<b>Machine Learning · Data · Ops</b></div>
+          <div class="bp-field">Leadership<b>Joint Secretary · NSU Games &amp; Sports Club</b></div>
+        </div>
       </div>
       <div class="bp-stub">
-             <img class="bp-photo" src="profile.png" alt="Readuanul Farid Fahim"> 
-         <!--  <div class="bp-avatar">RFF</div> -->
-        <div class="bp-field">MR<b>R. F. Fahim</b></div>
-        <div class="bp-field">Status<b> Always Open for new Opportunity </b></div>
-        <div class="barcode" aria-hidden="true"></div>
+        <div class="bp-photo-wrapper">
+          <img class="bp-photo" src="profile.png" alt="Readuanul Farid Fahim" width="200" height="200" fetchpriority="high" onerror="this.onerror=null;this.src='profile.svg';">
+        </div>
+        <div class="bp-stub-meta">
+          <div class="bp-field">MR<b>R. F. Fahim</b></div>
+          <div class="bp-field">Status<b class="status-cleared">Open to new opportunities</b></div>
+        </div>
+        <div class="barcode" aria-hidden="true">
+          <i style="height:14px"></i><i style="height:22px"></i><i style="height:18px"></i><i style="height:12px"></i><i style="height:24px"></i><i style="height:16px"></i><i style="height:20px"></i><i style="height:10px"></i><i style="height:22px"></i><i style="height:15px"></i><i style="height:19px"></i><i style="height:14px"></i><i style="height:24px"></i><i style="height:18px"></i><i style="height:12px"></i><i style="height:20px"></i><i style="height:16px"></i><i style="height:22px"></i><i style="height:14px"></i><i style="height:18px"></i><i style="height:10px"></i><i style="height:24px"></i><i style="height:16px"></i><i style="height:20px"></i>
+        </div>
       </div>
     </div>
 
     <div class="domains">
       <div class="domain amber">
-        <div class="dlabel">Aviation</div>
+        <div class="dlabel mono">Aviation</div>
         <div class="dtitle">Airport Operations</div>
-        <div class="ddesc">Ramp coordination, ground support, and safety-first execution at US-Bangla Airlines.</div>
+        <div class="ddesc">Ramp coordination, aircraft turnaround monitoring, and safety-first airside management at US-Bangla Airlines.</div>
       </div>
       <div class="domain teal">
-        <div class="dlabel">Technology</div>
-        <div class="dtitle">AI, ML &amp; Data Analysts</div>
-        <div class="ddesc">CSE graduate building computer vision, deep learning, and explainable AI projects.</div>
+        <div class="dlabel mono">Technology</div>
+        <div class="dtitle">AI, ML &amp; Data Analytics</div>
+        <div class="ddesc">CSE graduate engineering deep learning models, computer vision pipelines, and explainable AI systems.</div>
       </div>
       <div class="domain green">
-        <div class="dlabel">Sports</div>
+        <div class="dlabel mono">Sports</div>
         <div class="dtitle">Leadership &amp; Community</div>
-        <div class="ddesc">Joint Secretary at NSUSC, organizing university sports for four years running.</div>
+        <div class="ddesc">Joint Secretary at NSUSC, orchestrating multi-thousand student athletic tournaments four years running.</div>
       </div>
-    </div>
-
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#contact">Get in touch</a>
-      <a class="btn btn-ghost" href="https://github.com/ReaduanulFaridFahim" target="_blank" rel="noopener">View GitHub ↗</a>
-      <a class="btn btn-ghost" href="https://www.linkedin.com/in/readuanulfaridfahim" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </div>
 </header>
+
+<main id="main-content">
 
 <section id="about">
   <div class="wrap">
@@ -338,9 +716,9 @@
       </div>
       <div class="about-stats reveal">
         <div class="stat"><span>Airport Operations Executive</span><b>US-Bangla</b></div>
-        <div class="stat"><span>Joint Secretary, NSUSC</span><b>4+ yrs</b></div>
+        <div class="stat"><span>Joint Secretary, NSUSC</span><b class="stat-num" data-target="4" data-suffix="+ yrs">4+ yrs</b></div>
         <div class="stat"><span>CSE — AI &amp; ML specialization</span><b>NSU</b></div>
-        <div class="stat"><span>Licenses &amp; certifications</span><b>9</b></div>
+        <div class="stat"><span>Licenses &amp; certifications</span><b class="stat-num" data-target="9" data-suffix="">9</b></div>
         <div class="stat"><span>Languages</span><b>BN · EN</b></div>
       </div>
     </div>
@@ -405,7 +783,7 @@
         <div class="stack">
           <span>MediaPipe</span><span>Unity</span><span>ARKit/ARCore</span><span>Flask</span><span>Firebase</span>
         </div>
-        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Augmented-Reality-Based-Clothing-Trial-App" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Augmented-Reality-Based-Clothing-Trial-App" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
       </div>
 
       <div class="card reveal">
@@ -415,7 +793,7 @@
         <div class="stack">
           <span>TensorFlow</span><span>Keras</span><span>OpenCV</span><span>LIME</span><span>SHAP</span>
         </div>
-        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/-Bangla-Handwritten-Text-Conversion-Using-Optical-Character-Recognition-" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/-Bangla-Handwritten-Text-Conversion-Using-Optical-Character-Recognition-" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
       </div>
 
       <div class="card reveal">
@@ -425,7 +803,7 @@
         <div class="stack">
           <span>React</span><span>SQL</span><span>MySQL</span><span>Firebase</span>
         </div>
-        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Hotel-Management-System-" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Hotel-Management-System-" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
       </div>
 
       <div class="card reveal">
@@ -435,7 +813,7 @@
         <div class="stack">
           <span>Scikit-Learn</span><span>Pandas</span><span>Flask</span><span>XGBoost</span>
         </div>
-        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Pre-Owned-Bike-Price-Prediction" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Pre-Owned-Bike-Price-Prediction" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
       </div>
 
       <div class="card reveal">
@@ -445,7 +823,7 @@
         <div class="stack">
           <span>YOLOv5</span><span>MediaPipe</span><span>PyTorch</span><span>OpenCV</span>
         </div>
-        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Sign-Language-Detection" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Sign-Language-Detection" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
       </div>
 
       <div class="card reveal">
@@ -455,7 +833,7 @@
         <div class="stack">
           <span>Scikit-Learn</span><span>SMOTE</span><span>LIME</span><span>Python</span>
         </div>
-        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Sleep-Disorder-Predictions-" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <a class="card-link" href="https://github.com/ReaduanulFaridFahim/Sleep-Disorder-Predictions-" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
       </div>
     </div>
   </div>
@@ -466,7 +844,7 @@
     <div class="sec-head reveal"><span class="sec-num">04</span><h2>Skills</h2></div>
     <div class="skill-cols">
       <div class="skill-col reveal">
-        <h4>Technical</h4>
+        <h3>Technical</h3>
         <ul>
           <li>Machine Learning</li>
           <li>Artificial Intelligence</li>
@@ -476,7 +854,7 @@
         </ul>
       </div>
       <div class="skill-col reveal">
-        <h4>Operations</h4>
+        <h3>Operations</h3>
         <ul>
           <li>Airport &amp; Ramp Operations</li>
           <li>Commercial Aviation</li>
@@ -486,7 +864,7 @@
         </ul>
       </div>
       <div class="skill-col reveal">
-        <h4>Business &amp; Research</h4>
+        <h3>Business &amp; Research</h3>
         <ul>
           <li>Research Skills</li>
           <li>Lead Generation</li>
@@ -575,55 +953,54 @@
     <p class="sec-sub reveal">The one thing that competes with sports for my free time. A running passport of places across Bangladesh I've explored so far.</p>
 
     <div class="stamps">
-      <div class="stamp reveal"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Saint_Martin's_Island.JPG" alt="Saint Martin" onerror="this.style.display='none'"><div class="scrim"></div><div class="place">Saint Martin</div><div class="tag">Island</div></div>
-      <div class="stamp reveal"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cox's_Bazar_sea_beach.jpg" alt="Cox's Bazar" onerror="this.style.display='none'"><div class="scrim"></div><div class="place">Cox's Bazar</div><div class="tag">Coast</div></div>
-      <div class="stamp reveal"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Boga_Lake_at_Bandarban,_Bangladesh.JPG" alt="Bandarban" onerror="this.style.display='none'"><div class="scrim"></div><div class="place">Bandarban</div><div class="tag">Hills</div></div>
-      <div class="stamp reveal"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kaptai_Lake,_Rangamati,_Bangladesh.jpg" alt="Rangamati" onerror="this.style.display='none'"><div class="scrim"></div><div class="place">Rangamati</div><div class="tag">Lake</div></div>
-      <div class="stamp reveal"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hill_at_Bandarban,_26_May_2017.jpg" alt="Alikadam" onerror="this.style.display='none'"><div class="scrim"></div><div class="place">Alikadam</div><div class="tag">Highlands</div></div>
-      <div class="stamp reveal"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kutubdia_island.jpg" alt="Sonadia" onerror="this.style.display='none'"><div class="scrim"></div><div class="place">Sonadia</div><div class="tag">Island</div></div>
-        <div class="stamp reveal"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sylhet_city_04.jpg" alt="Sylhet" onerror="this.style.display='none'"><div class="scrim"></div><div class="place">Sylhet</div><div class="tag">City</div></div>
-      <div class="stamp reveal"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/The_beauty_of_Sunset_in_Shilaidaha,_Kushtia.jpg" alt="Tagore's Haor" onerror="this.style.display='none'"><div class="scrim"></div><div class="place">Tagore's Haor</div><div class="tag">Heritage</div></div>
-      <div class="stamp reveal"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Shada_Pathor.jpg" alt="Sadapathor" onerror="this.style.display='none'"><div class="scrim"></div><div class="place">Sadapathor</div><div class="tag">Stone Quarry</div></div>
-      <div class="stamp reveal"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ratargul_Swamp_Forest,_Sylhet,_Bangladesh.jpg" alt="Ratargul" onerror="this.style.display='none'"><div class="scrim"></div><div class="place">Ratargul</div><div class="tag">Swamp Forest</div></div>
+      <div class="stamp reveal"><img src="assets/travel/saint-martin.jpg" alt="Saint Martin Island" width="160" height="160" decoding="async" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Saint_Martin%27s_Island.JPG';"><div class="scrim"></div><div class="place">Saint Martin</div><div class="tag">Island</div></div>
+      <div class="stamp reveal"><img src="assets/travel/coxs-bazar.jpg" alt="Cox's Bazar coast" width="160" height="160" decoding="async" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cox%27s_Bazar_sea_beach.jpg';"><div class="scrim"></div><div class="place">Cox's Bazar</div><div class="tag">Coast</div></div>
+      <div class="stamp reveal"><img src="assets/travel/bandarban.jpg" alt="Bandarban hills" width="160" height="160" decoding="async" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Boga_Lake_at_Bandarban,_Bangladesh.JPG';"><div class="scrim"></div><div class="place">Bandarban</div><div class="tag">Hills</div></div>
+      <div class="stamp reveal"><img src="assets/travel/rangamati.jpg" alt="Rangamati lake" width="160" height="160" decoding="async" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Kaptai_Lake,_Rangamati,_Bangladesh.jpg';"><div class="scrim"></div><div class="place">Rangamati</div><div class="tag">Lake</div></div>
+      <div class="stamp reveal"><img src="assets/travel/alikadam.jpg" alt="Alikadam highlands" width="160" height="160" decoding="async" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Hill_at_Bandarban,_26_May_2017.jpg';"><div class="scrim"></div><div class="place">Alikadam</div><div class="tag">Highlands</div></div>
+      <div class="stamp reveal"><img src="assets/travel/sonadia.jpg" alt="Sonadia island" width="160" height="160" decoding="async" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Kutubdia_island.jpg';"><div class="scrim"></div><div class="place">Sonadia</div><div class="tag">Island</div></div>
+      <div class="stamp reveal"><img src="assets/travel/sylhet.jpg" alt="Sylhet city" width="160" height="160" decoding="async" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Sylhet_city_04.jpg';"><div class="scrim"></div><div class="place">Sylhet</div><div class="tag">City</div></div>
+      <div class="stamp reveal"><img src="assets/travel/tagores-haor.jpg" alt="Tagore's Haor heritage" width="160" height="160" decoding="async" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/The_beauty_of_Sunset_in_Shilaidaha,_Kushtia.jpg';"><div class="scrim"></div><div class="place">Tagore's Haor</div><div class="tag">Heritage</div></div>
+      <div class="stamp reveal"><img src="assets/travel/sadapathor.jpg" alt="Sadapathor stone quarry" width="160" height="160" decoding="async" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Shada_Pathor.jpg';"><div class="scrim"></div><div class="place">Sadapathor</div><div class="tag">Stone Quarry</div></div>
+      <div class="stamp reveal"><img src="assets/travel/ratargul.jpg" alt="Ratargul swamp forest" width="160" height="160" decoding="async" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Ratargul_Swamp_Forest,_Sylhet,_Bangladesh.jpg';"><div class="scrim"></div><div class="place">Ratargul</div><div class="tag">Swamp Forest</div></div>
     </div>
     <p class="travel-note reveal">Still adding stamps — always planning the next route.</p>
   </div>
 </section>
 
-  <section id="references">
+<section id="references">
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-num">08</span><h2>References</h2></div>
-    <p class="sec-sub reveal">Available on request. Replace the placeholders below with real names, titles, and contact details.</p>
- 
-    <!-- ================================================
-         ADD YOUR REFERENCES HERE
-         Duplicate a .ref-card block for each reference and fill in:
-         name, role/title, organization, and a phone or email contact line.
-    ==================================================== -->
+    <p class="sec-sub reveal">Academic and operational references available upon request.</p>
+
     <div class="ref-grid">
       <div class="ref-card reveal">
-        <div class="name">TBA</div>
-        <div class="role">TBA</div>
-        <span class="org">TBA</span>
-        <div class="contact-line">TBA</div>
+        <div class="name">Dr. Mahady Hasan</div>
+        <div class="role">Associate Professor</div>
+        <span class="org">North South University</span>
+        <div class="contact-line">Email: <a href="mailto:mahady.hasan@northsouth.edu" style="color:var(--amber); text-decoration:underline;">mahady.hasan@northsouth.edu</a></div>
       </div>
       <div class="ref-card reveal">
-        <div class="name">TBA</div>
-        <div class="role">TBA</div>
-        <span class="org">TBA</span>
-        <div class="contact-line">TBA</div>
+        <div class="name">Mohammad Arif</div>
+        <div class="role">Operations Supervisor</div>
+        <span class="org">US-Bangla Airlines</span>
+        <div class="contact-line">Division: Airport &amp; Ground Operations (Details upon request)</div>
       </div>
     </div>
+  </div>
+</section>
+
+</main>
 
 <footer id="contact">
   <div class="wrap">
     <div class="eyebrow reveal">Final destination</div>
-    <h2 class="reveal">Let's talk  Aviation, AI, sports, or where to travel next.</h2>
+    <h2 class="reveal">Let's talk Aviation, AI, sports, or where to travel next.</h2>
     <div class="contact-links reveal">
-      <a class="btn btn-primary" href="https://www.linkedin.com/in/readuanulfaridfahim" target="_blank" rel="noopener">Message on LinkedIn ↗</a>
-      <a class="btn btn-ghost" href="https://github.com/ReaduanulFaridFahim" target="_blank" rel="noopener">GitHub ↗</a>
-          <a class="btn btn-ghost" href="tel:+8801856501926">Call +880 1856-501926</a>
-      <a class="btn btn-ghost" href="https://wa.me/8801856501926" target="_blank" rel="noopener">WhatsApp ↗</a>
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/readuanulfaridfahim" target="_blank" rel="noopener noreferrer">Message on LinkedIn ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/ReaduanulFaridFahim" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <a class="btn btn-ghost" href="tel:+8801856501926">Call +880 1856-501926</a>
+      <a class="btn btn-ghost" href="https://wa.me/8801856501926" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
     </div>
     <div class="foot-bottom">
       <span>READUANUL FARID FAHIM — DHAKA, BANGLADESH</span>
@@ -632,15 +1009,26 @@
   </div>
 </footer>
 
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
 <script>
+  // ---------- 1. SCROLL REVEAL ANIMATION ----------
   const els = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-  }, { threshold:0.12 });
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
   els.forEach(el=>obs.observe(el));
 
-  // barcode generator
+  // ---------- 2. DYNAMIC BARCODE GENERATOR ----------
   document.querySelectorAll('.barcode').forEach(bc=>{
+    bc.innerHTML = '';
     for(let i=0;i<28;i++){
       const bar = document.createElement('i');
       const h = 8 + Math.random()*18;
@@ -649,6 +1037,230 @@
       bc.appendChild(bar);
     }
   });
+
+  // ---------- 3. READING PROGRESS & BACK TO TOP & SCROLLSPY ----------
+  const progressBar = document.getElementById('scroll-progress');
+  const backToTopBtn = document.getElementById('backToTop');
+  const navLinks = document.querySelectorAll('.navlinks a');
+  const sections = document.querySelectorAll('section[id], footer[id]');
+
+  window.addEventListener('scroll', ()=>{
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+    if (progressBar) progressBar.style.width = scrolled + '%';
+
+    if (backToTopBtn) {
+      if (winScroll > 400) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }
+
+    let currentId = '';
+    const scrollPos = winScroll + 120;
+    sections.forEach(sec=>{
+      const top = sec.offsetTop;
+      const h = sec.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + h) {
+        currentId = sec.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link=>{
+      const href = link.getAttribute('href');
+      if (href === '#' + currentId) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }, { passive: true });
+
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', ()=>{
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ---------- 4. TYPEWRITER / HEADLINE WORD ROTATOR ----------
+  const typewriterEl = document.getElementById('heroTypewriter');
+  if (typewriterEl) {
+    const phrases = ['AI & ML', 'Deep Learning', 'Computer Vision', 'Data Analytics', 'Explainable AI'];
+    let phraseIdx = 0;
+    let charIdx = phrases[0].length;
+    let isDeleting = false;
+    let typeDelay = 130;
+
+    function tickTypewriter() {
+      const current = phrases[phraseIdx];
+      if (isDeleting) {
+        typewriterEl.textContent = current.substring(0, charIdx - 1);
+        charIdx--;
+        typeDelay = 60;
+      } else {
+        typewriterEl.textContent = current.substring(0, charIdx + 1);
+        charIdx++;
+        typeDelay = 110;
+      }
+
+      if (!isDeleting && charIdx === current.length) {
+        typeDelay = 2200; // Pause at full word
+        isDeleting = true;
+      } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        phraseIdx = (phraseIdx + 1) % phrases.length;
+        typeDelay = 400; // Pause before typing next
+      }
+
+      setTimeout(tickTypewriter, typeDelay);
+    }
+    setTimeout(tickTypewriter, 2000);
+  }
+
+  // ---------- 5. NUMBER COUNTER ANIMATION ----------
+  const counterEls = document.querySelectorAll('.stat-num');
+  if (counterEls.length > 0) {
+    const counterObs = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'), 10);
+          const suffix = el.getAttribute('data-suffix') || '';
+          let count = 0;
+          const duration = 1200;
+          const stepTime = Math.max(Math.floor(duration / (target || 1)), 50);
+          const timer = setInterval(()=>{
+            count++;
+            if (count >= target) {
+              el.textContent = target + suffix;
+              clearInterval(timer);
+            } else {
+              el.textContent = count + suffix;
+            }
+          }, stepTime);
+          counterObs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counterEls.forEach(el=>counterObs.observe(el));
+  }
+
+  // ---------- 6. 3D CARD TILT & SPOTLIGHT EFFECT ----------
+  const tiltCards = document.querySelectorAll('.card, .boarding-pass');
+  tiltCards.forEach(card=>{
+    card.addEventListener('mousemove', (e)=>{
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const xPercent = (x / rect.width) - 0.5;
+      const yPercent = (y / rect.height) - 0.5;
+      const rotateX = (-yPercent * 6).toFixed(2);
+      const rotateY = (xPercent * 6).toFixed(2);
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', ()=>{
+      card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    });
+  });
+
+  // ---------- 7. AVIATION RADAR PARTICLE CONSTELLATION ----------
+  const canvas = document.getElementById('bg-canvas');
+  if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+    let mouse = { x: null, y: null };
+
+    window.addEventListener('resize', ()=>{
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }, { passive: true });
+
+    window.addEventListener('mousemove', (e)=>{
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    }, { passive: true });
+
+    window.addEventListener('mouseleave', ()=>{
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    // Particle constructor (waypoint flights)
+    const particleCount = Math.min(Math.floor(width / 32), 48);
+    const particles = [];
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
+        radius: Math.random() * 1.6 + 0.8,
+        color: Math.random() > 0.45 ? 'rgba(79, 209, 197, ' : 'rgba(242, 169, 59, '
+      });
+    }
+
+    function animateRadar() {
+      if (document.hidden) {
+        requestAnimationFrame(animateRadar);
+        return;
+      }
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw and update particles
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = width;
+        else if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        else if (p.y > height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color + '0.55)';
+        ctx.fill();
+
+        // Connect nearby particles
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 110) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(79, 209, 197, ${0.12 * (1 - dist / 110)})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+
+        // Connect to mouse pointer
+        if (mouse.x !== null && mouse.y !== null) {
+          const mdx = p.x - mouse.x;
+          const mdy = p.y - mouse.y;
+          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (mdist < 140) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(242, 169, 59, ${0.18 * (1 - mdist / 140)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(animateRadar);
+    }
+    requestAnimationFrame(animateRadar);
+  }
 </script>
 
 </body>

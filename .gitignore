@@ -1,0 +1,12 @@
+# Python virtual environments & bytecode
+.venv/
+__pycache__/
+*.pyc
+
+# Local scratch & comparison files
+live_github_io.html
+scratch_diff.txt
+
+# OS metadata
+.DS_Store
+Thumbs.db

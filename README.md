@@ -1,37 +1,63 @@
-# Readuanul Farid Fahim — Portfolio
+# Readuanul Farid Fahim Portfolio
 
-Personal portfolio site, live at [readuanulfaridfahim.github.io](https://readuanulfaridfahim.github.io).
+A polished single-page portfolio for a Computer Science graduate with focus on AI/ML, aviation operations, and sports leadership.
 
-Airport Operations Executive at US-Bangla Airlines | CSE Graduate specialized in AI & ML | Business Operations & Leadership Enthusiast.
+## Run locally
 
-## About
+You can run the portfolio locally using any of the following methods:
 
-Single-page portfolio built around a boarding-pass / flight-log visual theme, tying together an aviation operations background with a CSE/AI-ML education. Includes:
+### Method 1: Using `uv` (Fastest & Recommended)
+```bash
+uv run serve.py
+```
+This automatically finds an available port, disables browser caching so edits show instantly, and opens `http://localhost:8000` in your default browser.
 
-- **About** — background and focus areas
-- **Experience** — US-Bangla Airlines, NSUSC, TechDistri, GAOTek
-- **Projects** — AR-based clothing trial app, Bangla handwritten OCR with Explainable AI
-- **Skills** — technical, operations, and business
-- **Education & Certifications**
-- **Contact** — LinkedIn and GitHub
+### Method 2: One-Click Launch (Windows)
+Double-click `start-localhost.bat` or run:
+```powershell
+.\start-localhost.ps1
+```
 
-## Tech
+### Method 3: Standard Python
+```bash
+python serve.py
+# or
+python -m http.server 8000
+```
 
-Plain HTML/CSS/JS — no build step, no dependencies beyond Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+### Method 4: npm / Node
+```bash
+npm start
+# or
+npm run dev
+```
 
-## Running locally
+Then open:
+```text
+http://localhost:8000
+```
 
-Just open `index.html` in a browser. No server or install required.
+## Deploy on GitHub Pages
 
-## Deployment
+1. Push this project to a GitHub repository.
+2. Open the repository settings.
+3. Go to Pages.
+4. Set the source to the main branch and root folder.
+5. Save.
+6. Your site will be available at:
 
-Hosted via GitHub Pages from the `main` branch of this repo (`readuanulfaridfahim.github.io`). Any push to `main` updates the live site within a minute or two.
+```text
+https://<your-username>.github.io/<your-repo-name>/
+```
 
-## Updating content
+## Deploy on Netlify
 
-All content lives directly in `index.html` — edit the relevant section and commit. No CMS or data file involved.
+1. Drag and drop the project folder into Netlify.
+2. Keep the publish directory as the project root.
+3. Deploy.
 
-## Contact
+## Notes
 
-- LinkedIn: [linkedin.com/in/readuanulfaridfahim](https://www.linkedin.com/in/readuanulfaridfahim)
-- GitHub: [github.com/ReaduanulFaridFahim](https://github.com/ReaduanulFaridFahim)
+- The portfolio is a static HTML file and works without a build step.
+- The profile photo uses the GitHub avatar with an offline SVG fallback (`profile.svg`).
+- Project thumbnails are located in `assets/`, and travel stamp photography is preserved locally in `assets/travel/` for reliability and offline support.
